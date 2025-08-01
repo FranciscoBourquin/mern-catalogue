@@ -2,9 +2,10 @@
 import express, { urlencoded } from "express";
 import { productsRouter } from "./routes/products.routes.js";
 import { connectToDB } from "./db/connectToDB.js";
+import "dotenv/config"
 
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT;
 
 // middlewares
 app.use(express.json())
