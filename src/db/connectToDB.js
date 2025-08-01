@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export const connectToDB = async () => {
     try {
-        await mongoose.connect("mongodb+srv://franbourquin89:MLoSq22MsuxcVM7E@fran2024.2kbny0g.mongodb.net/mern-catalog?retryWrites=true&w=majority&appName=Fran2024");
+        await mongoose.connect(process.env.MONGO_URI);
 
         console.log("Base de datos conectada exitosamente");
         
