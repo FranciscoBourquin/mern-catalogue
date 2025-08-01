@@ -43,3 +43,22 @@ export const getProductByIdService = async (id) => {
         
     }
 }
+
+export const updateProductByIdService = async (id) => {
+    const product = await productModel.findById({_id: id });
+
+    if (!product) return "Producto no encontrado";
+
+    if (product.stock == 0) product.availability = "Agotado";
+    await product.save()
+
+}
+
+export const deleteProductByIdService = async (id) => {
+    const deleteProduct = await productModel.findByIdAndDelete({_id: id});
+
+    if (!deleteProduct) return "Producto no encontrado";
+
+    return deleteProduct;
+}
+
