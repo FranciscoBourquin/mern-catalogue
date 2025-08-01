@@ -12,7 +12,7 @@ export const createProductController = async (req, res) => {
          });
 
     } catch (error) {
-        return res.status(500).json({message: `${error.message}`})
+        return res.status(500).json({message: error.message})
     }
 }
 
@@ -24,7 +24,7 @@ export const getProductsController = async (req, res) => {
             products
         })
     } catch (error) {
-        res.status(500).json({error: `${error.message}`});
+        res.status(500).json({error: error.message});
     }
 }
 
@@ -39,27 +39,27 @@ export const getProductByIdController = async (req, res) => {
         })
 
     } catch (error) {
-        res.status(500).json({message: `${error.message}`});
+        res.status(500).json({message: error.message});
     }
 
     
 }
 
 export const updateProductByIdController = async (req, res) => {
-    const { id } = req.params;
-    const productInfo = req.body;
+  const { id } = req.params;
+  const productInfo = req.body;
 
-    try {
-        const updateProduct =  await updateProductByIdService(id, productInfo); 
-        res.status(200).json({
-            message: `Producto con ID ${id} actualizado exitosamente`,
-            updateProduct
-        });
-            
-    } catch (error) {
-        res.status(500).json({message: `${error.message}`})
-    }
-}
+  try {
+    const updatedProduct = await updateProductByIdService(id, productInfo);
+    res.status(200).json({
+      message: `Producto con ID ${id} actualizado exitosamente`,
+      updatedProduct
+    });
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 export const deleteProductByIdController = async (req, res) => {
     const {id} = req. params;
@@ -71,6 +71,6 @@ export const deleteProductByIdController = async (req, res) => {
             deleteProduct
         })
     } catch (error) {
-        res.status(500).json({message: `${error.message}`});
+        res.status(500).json({message: error.message});
     }
 }
