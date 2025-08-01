@@ -1,5 +1,5 @@
 
-import { createProductService, getProductsService, getProductByIdService, deleteProductByIdService } from "../services/products.service.js";
+import { createProductService, getProductsService, getProductByIdService, deleteProductByIdService, updateProductByIdService } from "../services/products.service.js";
 
 export const createProductController = async (req, res) => {
     const product = req.body;
@@ -43,6 +43,22 @@ export const getProductByIdController = async (req, res) => {
     }
 
     
+}
+
+export const updateProductByIdController = async (req, res) => {
+    const { id } = req.params;
+    const productInfo = req.body;
+
+    try {
+        const updateProduct =  await updateProductByIdService(id, productInfo); 
+        res.status(200).json({
+            message: `Producto con ID ${id} actualizado exitosamente`,
+            updateProduct
+        });
+            
+    } catch (error) {
+        res.status(500).json({message: `${error.message}`})
+    }
 }
 
 export const deleteProductByIdController = async (req, res) => {
