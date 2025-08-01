@@ -22,7 +22,22 @@ const productSchema = new mongoose.Schema ({
     description: {
         type: String,
         required: true
-    } 
+    },
+    
+    
+    availability: {
+            
+        type: String, 
+        required: true,
+        enum: ["Disponible", "Agotado"],
+        default: "Disponible"
+            },
+    
+    stock: {
+        type: Number,
+        min: 0,
+        required: true
+    }
 
 });
 
