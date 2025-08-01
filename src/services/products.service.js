@@ -45,18 +45,23 @@ export const getProductByIdService = async (id) => {
 }
 
 export const updateProductByIdService = async (id, productInfo) => {
-    try {
-        const product = await productModel.findByIdAndUpdate(id, productInfo, {new: true});
-        if (!product) return "Producto no encontrado";
-        return product;
+  try {
+    const product = await productModel.findById(id);
+    if (!product) throw new Error("Producto no encontrado");
 
+    Object.assign(product, productInfo);
 
-    } catch (error) {
-        throw new Error(error.message);
-        
+    if (typeof product.stock === 'number') {
+      product.availability = product.stock === 0 ? 'agotado' : 'disponible';
     }
 
-}
+    const updatedProduct = await product.save(); 
+    return updatedProduct;
+
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 export const deleteProductByIdService = async (id) => {
     const deleteProduct = await productModel.findByIdAndDelete({_id: id});
