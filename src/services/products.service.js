@@ -75,7 +75,7 @@ export const deleteProductByIdService = async (id) => {
         return deleteProduct;
 
     } catch (error) {
-        return error.messaage
+        throw new Error(error.messaage); 
     }
     
 }
