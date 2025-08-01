@@ -1,9 +1,9 @@
 import { productModel } from "../models/product.model.js"
 
 export const createProductService = async (product) => {
-    const {name, price, image, description} = product;
+    const {name, price, image, description, availability, stock} = product;
     try {
-        const newProduct = await productModel.create({ name, price, image, description});
+        const newProduct = await productModel.create({ name, price, image, description, availability, stock});
         return newProduct;
     } catch (error) {
         throw new Error(`Error al crear producto: ${error.message}`);
