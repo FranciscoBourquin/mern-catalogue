@@ -8,8 +8,8 @@ productsRouter.post("/", createProductController);
 
 productsRouter.get("/", getProductsController)
 
-productsRouter.get("product/:id", getProductByIdController)
+productsRouter.get("/product/:id", getProductByIdController)
 
-productsRouter.put("product/:id", updateProductByIdController)
+productsRouter.put("/product/:id", updateProductByIdController)
 
-productsRouter.delete("product/:id", deleteProductByIdController);
+productsRouter.delete("/product/:id", deleteProductByIdController);
