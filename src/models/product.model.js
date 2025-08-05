@@ -30,7 +30,6 @@ const productSchema = new mongoose.Schema ({
         type: String, 
         required: true,
         enum: ["Disponible", "Agotado"],
-        default: "Disponible"
             },
     
     stock: {
