@@ -1,0 +1,14 @@
+.flex-container {
+    display: flex;
+    justify-content:space-evenly;
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    }
+
+button {
+    background-color: #3219bba1;
+    color: #fff;
+    font-weight: bold;
+    padding: 20px;
+}
