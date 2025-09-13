@@ -1,10 +1,9 @@
-import { Button } from './components/Button/Button'
-import './App.css'
+import { CategoriesCard } from "./components/CategoriesCard"
 
 function App() {
   return (
     <>
-      <Button />
+      <CategoriesCard />
     </>
   )
 }
