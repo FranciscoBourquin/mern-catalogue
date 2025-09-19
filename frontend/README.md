@@ -1,12 +1,55 @@
-# React + Vite
+📖 FranTech Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Pequeño e-commerce de ejemplo hecho con React, usando React Router DOM, Context API y Tailwind CSS.
+La app simula un catálogo de productos que se cargan desde un mock y se organizan por categorías.
 
-Currently, two official plugins are available:
+🚀 Tecnologías usadas
+⚛️ React
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Framework principal para construir la interfaz. Permite dividir la app en componentes reutilizables como Navbar, CategoriesCard, ProductsCard.
 
-## Expanding the ESLint configuration
+🌐 React Router DOM
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Manejador de rutas en la SPA. Gracias a esto, la app tiene distintas páginas:
+
+/ → Home con las categorías.
+
+/productos/televisores → Lista de TVs.
+
+/productos/laptops → Lista de laptops.
+
+/productos/smartphones → Lista de smartphones.
+
+Justificación: mantiene la experiencia de Single Page Application sin recargar la página.
+
+📦 Context API
+
+Sistema de estado global que evita el "prop drilling" (pasar props de componente en componente).
+En este caso se usa ProductContext para:
+
+Guardar todos los productos (mock).
+
+Compartirlos con cualquier página o componente que los necesite.
+
+Centralizar la lógica de carga (simulada con useEffect).
+
+🎨 Tailwind CSS
+
+Framework de utilidades para CSS. Permite diseñar rápido con clases.
+Justificación: acelera el prototipado y mantiene los estilos consistentes.
+
+🧪 Mock de productos
+
+Los datos se guardan en mocks/products.js. Se cargan con un useEffect en el ProductProvider para simular una API real.
+
+✅ Justificación de decisiones
+
+Context API: suficiente para un proyecto chico → no hace falta Redux ni Zustand.
+
+React Router DOM: permite estructurar la app como un e-commerce real.
+
+Mock + useEffect: prepara el terreno para reemplazar fácilmente con un fetch real a una API.
+
+Tailwind: mantiene el código rápido y limpio, ideal para prototipar.
+
+Arquitectura modular (components / pages / context): escalable y fácil de mantener.

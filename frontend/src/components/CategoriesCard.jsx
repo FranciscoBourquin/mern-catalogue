@@ -1,9 +1,11 @@
-import { products } from "../mocks/products"
+import { Link } from "react-router-dom";
+import { useProducts } from "../context/ProductContext";
 
 export const CategoriesCard = () => {
+  const { products } = useProducts();
 
   const uniqueCategories = products.reduce((acc, product) => {
-    if (!acc.some(p => p.category === product.category)) {
+    if (!acc.some((p) => p.category === product.category)) {
       acc.push(product);
     }
     return acc;
@@ -12,9 +14,10 @@ export const CategoriesCard = () => {
   return (
     <div className="grid grid-cols-3 gap-6 p-6">
       {uniqueCategories.map((item) => (
-        <div
+        <Link
           key={item.category}
-          className="p-4 border rounded-2xl shadow hover:shadow-lg transition cursor-pointer"
+          to={`/productos/${item.category}`}
+          className="p-4 border rounded shadow hover:shadow-lg transition"
         >
           <img
             src={item.image}
@@ -24,8 +27,8 @@ export const CategoriesCard = () => {
           <h2 className="text-center font-semibold text-lg uppercase">
             {item.category}
           </h2>
-        </div>
+        </Link>
       ))}
     </div>
   );
-}
+};
